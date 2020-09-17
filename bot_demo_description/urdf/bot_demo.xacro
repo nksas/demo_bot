@@ -1,0 +1,140 @@
+<?xml version="1.0" ?>
+<robot name="bot_demo" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+<xacro:include filename="$(find bot_demo_description)/urdf/materials.xacro" />
+<xacro:include filename="$(find bot_demo_description)/urdf/bot_demo.trans" />
+<xacro:include filename="$(find bot_demo_description)/urdf/bot_demo.gazebo" />
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0 -0.024957416567412117 -4.362465870905329e-06"/>
+    <mass value="2.75366537558267"/>
+    <inertia ixx="0.002873" ixy="0.0" ixz="0.0" iyy="0.00343" iyz="0.0" izz="0.001706"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/base_link.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel1_1">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0024999999999999953 5.227513993379118e-08 -1.9847322889343655e-07"/>
+    <mass value="0.026973518174181"/>
+    <inertia ixx="3e-06" ixy="-0.0" ixz="0.0" iyy="2e-06" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.045 0.006769 -0.03608"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.045 0.006769 -0.03608"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_1.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel1_4">
+  <inertial>
+    <origin rpy="0 0 0" xyz="-0.0024999999999999883 3.518155856632385e-07 3.486999119103884e-07"/>
+    <mass value="0.026973518174181"/>
+    <inertia ixx="3e-06" ixy="0.0" ixz="-0.0" iyy="2e-06" iyz="0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="-0.045 0.005193 0.039977"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="-0.045 0.005193 0.039977"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_4.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel1_2">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0024999999999999953 3.518155931260189e-07 3.4869990436087184e-07"/>
+    <mass value="0.026973518174181"/>
+    <inertia ixx="3e-06" ixy="-0.0" ixz="0.0" iyy="2e-06" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.045 0.005193 0.039977"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.045 0.005193 0.039977"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_2.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<link name="wheel1_3">
+  <inertial>
+    <origin rpy="0 0 0" xyz="0.0024999999999999953 5.227513993379118e-08 -1.9847322886568097e-07"/>
+    <mass value="0.026973518174181"/>
+    <inertia ixx="3e-06" ixy="-0.0" ixz="-0.0" iyy="2e-06" iyz="-0.0" izz="2e-06"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0.045 0.006769 -0.03608"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+    <material name="silver"/>
+  </visual>
+  <collision>
+    <origin rpy="0 0 0" xyz="0.045 0.006769 -0.03608"/>
+    <geometry>
+      <mesh filename="package://bot_demo_description/meshes/wheel1_3.stl" scale="0.001 0.001 0.001"/>
+    </geometry>
+  </collision>
+</link>
+
+<joint name="Rev1" type="continuous">
+  <origin rpy="0 0 0" xyz="0.045 -0.006769 0.03608"/>
+  <parent link="base_link"/>
+  <child link="wheel1_1"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rev2" type="continuous">
+  <origin rpy="0 0 0" xyz="0.045 -0.005193 -0.039977"/>
+  <parent link="base_link"/>
+  <child link="wheel1_4"/>
+  <axis xyz="1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rev3" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.045 -0.005193 -0.039977"/>
+  <parent link="base_link"/>
+  <child link="wheel1_2"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+<joint name="Rev4" type="continuous">
+  <origin rpy="0 0 0" xyz="-0.045 -0.006769 0.03608"/>
+  <parent link="base_link"/>
+  <child link="wheel1_3"/>
+  <axis xyz="-1.0 0.0 0.0"/>
+</joint>
+
+</robot>
